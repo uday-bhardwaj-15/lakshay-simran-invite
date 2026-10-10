@@ -166,7 +166,7 @@ function Invite() {
               Lakshay
             </p>
             <p className="reveal d2 mt-1 text-[clamp(0.85rem,3.8vw,1.05rem)] font-semibold text-foreground">
-              {D.groomParents}
+              S/o {D.groomParents}
             </p>
 
             <div className="reveal d3 my-3 h-px w-20 bg-gold/70" />
@@ -175,7 +175,7 @@ function Invite() {
               Simran
             </p>
             <p className="reveal d3 mt-1 text-[clamp(0.85rem,3.8vw,1.05rem)] font-semibold text-foreground">
-              {D.brideParents}
+              D/o {D.brideParents}
             </p>
           </Section>
 

@@ -12,7 +12,7 @@ const D = {
   grandparents: "Mr. Rajendra Arora & Mrs. Bala Arora",
   groomParents: "Mr. Pankaj Arora & Mrs. Manisha Arora",
   brideParents: "Mr. Vikas Kheterpal & Mrs. Sangeeta Kheterpal",
-  sister: "Miss Lisha Arora",
+  sister: "Lisha Arora",
   chachaChachi: [
     "Neeraj Arora & Varsha Arora",
     "Tanuj Arora & Kavita Arora",
@@ -208,7 +208,7 @@ function Invite() {
               YOU ARE INVITED TO
             </p>
             <h2 className="reveal d1 mt-2 font-[family-name:var(--font-script)] text-[clamp(1.9rem,9vw,2.8rem)] leading-tight gold-text">
-              Haldi &amp; Lunch
+              Haldi &amp; Carnival
             </h2>
             <p className="reveal d2 mt-3 text-[clamp(0.95rem,4.2vw,1.2rem)] font-semibold text-foreground">
               25 November 2026
@@ -302,11 +302,15 @@ function Invite() {
                 Sister
               </p>
               <p className="mt-0.5 text-xs sm:text-sm font-semibold text-foreground">{D.sister}</p>
+              <p className="mt-0.5 text-xs sm:text-sm font-semibold text-foreground">
+                A brother by birth, a friend for life. With all my love, I invite you to celebrate
+                his forever.
+              </p>
 
               <div className="my-2 h-px w-16 mx-auto bg-gold/40" />
 
               <p className="text-[11px] uppercase tracking-widest text-maroon font-semibold">
-                Chacha &amp; Chachi
+                Family
               </p>
               <div className="mt-1 space-y-0.5 text-xs sm:text-sm text-foreground font-medium">
                 {D.chachaChachi.map((pair) => (

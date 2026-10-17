@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 const TITLE = "Lakshay & Simran — Wedding Invitation";
 const DESC = "With joy, we invite you to celebrate the wedding of Lakshay and Simran.";
@@ -91,15 +92,66 @@ function Section({
 
 function Invite() {
   const [stage, setStage] = useState<"tap" | "playing" | "done">("tap");
+  const [isPlaying, setIsPlaying] = useState(false);
   const entryRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const start = () => {
     if (stage !== "tap") return;
     setStage("playing");
+    // Unlock/prime audio on user gesture for seamless playback when names appear
+    if (audioRef.current) {
+      audioRef.current.play().then(() => {
+        audioRef.current?.pause();
+        if (audioRef.current) audioRef.current.currentTime = 0;
+      }).catch(() => {});
+    }
     entryRef.current?.play().catch(() => setStage("done"));
   };
 
+  useEffect(() => {
+    if (stage === "done" && audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    }
+  }, [stage]);
+
+  const toggleAudio = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    }
+  };
+
   return (
-    <main className="mx-auto h-[100svh] w-[min(100vw,calc(100svh*9/16))] snap-y snap-mandatory overflow-y-auto bg-background shadow-2xl">
+    <main className="relative mx-auto h-[100svh] w-[min(100vw,calc(100svh*9/16))] snap-y snap-mandatory overflow-y-auto bg-background shadow-2xl">
+      <audio ref={audioRef} src="/jashn-e-bahara.mp3" loop preload="auto" />
+
+      {/* Floating Audio Control */}
+      {stage === "done" && (
+        <button
+          onClick={toggleAudio}
+          type="button"
+          aria-label={isPlaying ? "Mute music" : "Play music"}
+          className="fixed top-4 right-[max(1rem,calc((100vw-min(100vw,calc(100svh*9/16)))/2+1rem))] z-50 flex h-10 w-10 items-center justify-center rounded-full border border-gold/60 bg-background/85 text-maroon shadow-lg backdrop-blur-md transition-all hover:scale-105 active:scale-95"
+        >
+          {isPlaying ? (
+            <Volume2 className="h-5 w-5 animate-pulse text-maroon" />
+          ) : (
+            <VolumeX className="h-5 w-5 text-muted-foreground" />
+          )}
+        </button>
+      )}
       {/* 1. Entry */}
       <section
         onClick={start}
@@ -254,12 +306,12 @@ function Invite() {
                 <span className="text-maroon font-semibold">Ghud chadi (at Residence):</span> 4:00
                 PM
               </p>
-              <p className="font-medium">
+              {/* <p className="font-medium">
                 <span className="text-maroon font-semibold">Chadhat:</span> 7:00 PM •{" "}
                 <span className="text-maroon font-semibold">Jaimala:</span> 9:00 PM
-              </p>
+              </p> */}
               <p className="font-medium">
-                <span className="text-maroon font-semibold">Dinner:</span> 9:30 PM
+                <span className="text-maroon font-semibold">Dinner:</span> 8:00 PM
               </p>
             </div>
           </Section>
@@ -301,7 +353,9 @@ function Invite() {
               <p className="text-[11px] uppercase tracking-widest text-maroon font-semibold">
                 Sister
               </p>
-              <p className="mt-0.5 text-xs sm:text-sm font-semibold text-foreground">{D.sister}</p>
+              <p className="mt-0.5 text-xs sm:text-sm font-[family-name:var(--font-script)] text-[clamp(1.8rem,8vw,2.5rem)] gold-text">
+                {D.sister}
+              </p>
               <p className="mt-0.5 text-xs sm:text-sm font-semibold text-foreground">
                 A brother by birth, a friend for life. With all my love, I invite you to celebrate
                 his forever.

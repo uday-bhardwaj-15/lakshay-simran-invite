@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -142,12 +143,73 @@
   }
 }
 
-:root{--gold:oklch(0.68 0.12 75);--maroon:oklch(0.38 0.13 20);--shadow-gold:0 10px 30px -10px color-mix(in oklab,var(--gold) 70%,transparent);}
-@theme inline{--color-gold:var(--gold);--color-maroon:var(--maroon);--font-script:"Great Vibes",cursive;--font-display:"Cormorant Garamond",serif;}
-body{font-family:"Cormorant Garamond",serif;}
-.reveal{opacity:0;transform:translateY(30px) scale(.97);filter:blur(6px);transition:all 1.2s cubic-bezier(.2,.7,.2,1);}
-.in .reveal{opacity:1;transform:none;filter:none;}
-.in .reveal.d1{transition-delay:.25s}.in .reveal.d2{transition-delay:.5s}.in .reveal.d3{transition-delay:.75s}.in .reveal.d4{transition-delay:1s}
-.gold-text{background:linear-gradient(120deg,var(--maroon),var(--gold),var(--maroon));-webkit-background-clip:text;background-clip:text;color:transparent;}
-@keyframes pulse-soft{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
-.pulse-soft{animation:pulse-soft 2s ease-in-out infinite}
+:root {
+  --gold: oklch(0.68 0.12 75);
+  --maroon: oklch(0.38 0.13 20);
+  --shadow-gold: 0 10px 30px -10px color-mix(in oklab, var(--gold) 70%, transparent);
+}
+@theme inline {
+  --color-gold: var(--gold);
+  --color-maroon: var(--maroon);
+  --font-script: var(--font-script), "Great Vibes", cursive;
+  --font-display: var(--font-display), "Cormorant Garamond", serif;
+  --font-instrument-serif: "Instrument Serif", serif;
+  --font-beau-rivage: "Instrument Serif", serif;
+}
+.instrument-serif-regular {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.instrument-serif-regular-italic,
+.instrument-serif-italic {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+body {
+  font-family: "Cormorant Garamond", serif;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  filter: blur(6px);
+  transition: all 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.in .reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.in .reveal.d1 {
+  transition-delay: 0.25s;
+}
+.in .reveal.d2 {
+  transition-delay: 0.5s;
+}
+.in .reveal.d3 {
+  transition-delay: 0.75s;
+}
+.in .reveal.d4 {
+  transition-delay: 1s;
+}
+.gold-text {
+  background: linear-gradient(120deg, var(--maroon), var(--gold), var(--maroon));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+.pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}

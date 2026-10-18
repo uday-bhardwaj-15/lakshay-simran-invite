@@ -90,6 +90,60 @@ function Section({
   );
 }
 
+function OrnamentalSeparator({
+  className = "",
+  width = "max-w-[150px]",
+}: {
+  className?: string;
+  width?: string;
+}) {
+  return (
+    <div
+      className={`flex items-center justify-center w-full ${width} mx-auto text-gold/80 ${className}`}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 160 16" className="w-full h-3 overflow-visible" fill="currentColor">
+        {/* Left line with dot */}
+        <line
+          x1="2"
+          y1="8"
+          x2="65"
+          y2="8"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          strokeOpacity="0.75"
+        />
+        <circle cx="65" cy="8" r="1.1" fill="currentColor" />
+
+        {/* Center floral motif */}
+        {/* Center petal */}
+        <path d="M 80,12 C 77.8,8.8 77.8,4.5 80,1.5 C 82.2,4.5 82.2,8.8 80,12 Z" />
+        {/* Left petal */}
+        <path d="M 79,9.5 C 75.8,8.8 72.8,7.2 71.8,4.2 C 74.5,4.8 77.2,6.8 79,9.5 Z" />
+        {/* Right petal */}
+        <path d="M 81,9.5 C 84.2,8.8 87.2,7.2 88.2,4.2 C 85.5,4.8 82.8,6.8 81,9.5 Z" />
+        {/* Base diamond */}
+        <polygon points="80,9.2 82,11.5 80,13.8 78,11.5" />
+        {/* Flanking dots */}
+        <circle cx="74.5" cy="11.5" r="1" />
+        <circle cx="85.5" cy="11.5" r="1" />
+
+        {/* Right line with dot */}
+        <circle cx="95" cy="8" r="1.1" fill="currentColor" />
+        <line
+          x1="95"
+          y1="8"
+          x2="158"
+          y2="8"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          strokeOpacity="0.75"
+        />
+      </svg>
+    </div>
+  );
+}
+
 function Invite() {
   const [stage, setStage] = useState<"tap" | "playing" | "done">("tap");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -101,10 +155,13 @@ function Invite() {
     setStage("playing");
     // Unlock/prime audio on user gesture for seamless playback when names appear
     if (audioRef.current) {
-      audioRef.current.play().then(() => {
-        audioRef.current?.pause();
-        if (audioRef.current) audioRef.current.currentTime = 0;
-      }).catch(() => {});
+      audioRef.current
+        .play()
+        .then(() => {
+          audioRef.current?.pause();
+          if (audioRef.current) audioRef.current.currentTime = 0;
+        })
+        .catch(() => {});
     }
     entryRef.current?.play().catch(() => setStage("done"));
   };
@@ -260,7 +317,7 @@ function Invite() {
               YOU ARE INVITED TO
             </p>
             <h2 className="reveal d1 mt-2 font-[family-name:var(--font-script)] text-[clamp(1.9rem,9vw,2.8rem)] leading-tight gold-text">
-              Haldi &amp; Carnival
+              Haldi Carnival
             </h2>
             <p className="reveal d2 mt-3 text-[clamp(0.95rem,4.2vw,1.2rem)] font-semibold text-foreground">
               25 November 2026
@@ -349,19 +406,27 @@ function Invite() {
               With Best Compliments
             </h2>
 
-            <div className="reveal d2 mt-4 w-full max-w-sm rounded-2xl border border-gold/30 bg-background/80 p-4 shadow-sm backdrop-blur-sm">
+            <OrnamentalSeparator className="reveal d1 my-2" width="max-w-[150px]" />
+
+            <div className="reveal d2 mt-1 w-full max-w-sm rounded-2xl border border-gold/40 bg-background/80 p-3.5 sm:p-4 shadow-sm backdrop-blur-sm">
               <p className="text-[11px] uppercase tracking-widest text-maroon font-semibold">
                 Sister
               </p>
-              <p className="mt-0.5 text-xs sm:text-sm font-[family-name:var(--font-script)] text-[clamp(1.8rem,8vw,2.5rem)] gold-text">
+              <p
+                className="mt-0.5 instrument-serif-italic italic leading-tight text-lg py-0.5 text-foreground"
+                style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic" }}
+              >
                 {D.sister}
               </p>
-              <p className="mt-0.5 text-xs sm:text-sm font-semibold text-foreground">
+
+              <OrnamentalSeparator className="my-2" width="max-w-[130px]" />
+
+              <p className="text-xs sm:text-sm font-semibold text-foreground leading-snug px-2">
                 A brother by birth, a friend for life. With all my love, I invite you to celebrate
                 his forever.
               </p>
 
-              <div className="my-2 h-px w-16 mx-auto bg-gold/40" />
+              <OrnamentalSeparator className="my-2" width="max-w-[130px]" />
 
               <p className="text-[11px] uppercase tracking-widest text-maroon font-semibold">
                 Family
@@ -372,7 +437,7 @@ function Invite() {
                 ))}
               </div>
 
-              <div className="my-2 h-px w-16 mx-auto bg-gold/40" />
+              <OrnamentalSeparator className="my-2" width="max-w-[130px]" />
 
               <p className="text-[11px] uppercase tracking-widest text-maroon font-semibold">
                 Cousins
@@ -382,11 +447,13 @@ function Invite() {
               </p>
             </div>
 
-            <div className="reveal d3 mt-4 flex flex-col items-center gap-1 text-xs text-muted-foreground">
+            <div className="reveal d3 mt-3 flex flex-col items-center gap-1 text-xs text-muted-foreground w-full">
+              <OrnamentalSeparator className="my-1" width="max-w-[140px]" />
               <p className="text-[11px] font-semibold uppercase tracking-widest text-maroon">
                 R.S.V.P.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs font-semibold text-foreground">
+              <OrnamentalSeparator className="my-1" width="max-w-[140px]" />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs font-semibold text-foreground mt-0.5">
                 {D.contacts.map((c) => (
                   <a
                     key={c.phone}

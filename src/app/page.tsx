@@ -194,7 +194,7 @@ function Invite() {
     <main className="relative mx-auto h-[100svh] w-[min(100vw,calc(100svh*9/16))] snap-y snap-mandatory overflow-y-auto bg-background shadow-2xl">
       <audio ref={audioRef} src="/jashn-e-bahara.mp3" loop preload="auto" />
 
-      {/* Floating Audio Control */}
+      {/* Floating Audio Control
       {stage === "done" && (
         <button
           onClick={toggleAudio}
@@ -208,7 +208,7 @@ function Invite() {
             <VolumeX className="h-5 w-5 text-muted-foreground" />
           )}
         </button>
-      )}
+      )} */}
       {/* 1. Entry */}
       <section
         onClick={start}

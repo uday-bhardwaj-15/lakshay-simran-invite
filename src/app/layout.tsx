@@ -17,12 +17,12 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Lakshay & Simran — Wedding Invitation",
-  description: "With joy, we invite you to celebrate the wedding of Lakshay and Simran.",
+  title: "Isha & Yash — Wedding Invitation",
+  description: "Cordially invite you to celebrate the wedding of Isha and Yash.",
   openGraph: {
     type: "website",
-    title: "Lakshay & Simran — Wedding Invitation",
-    description: "With joy, we invite you to celebrate the wedding of Lakshay and Simran.",
+    title: "Isha & Yash — Wedding Invitation",
+    description: "Cordially invite you to celebrate the wedding of Isha and Yash.",
   },
   twitter: {
     card: "summary_large_image",

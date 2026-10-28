@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -151,7 +151,7 @@
 @theme inline {
   --color-gold: var(--gold);
   --color-maroon: var(--maroon);
-  --font-script: var(--font-script), "Great Vibes", cursive;
+  --font-script: "Alex Brush", var(--font-script), "Great Vibes", cursive;
   --font-display: var(--font-display), "Cormorant Garamond", serif;
   --font-instrument-serif: "Instrument Serif", serif;
   --font-beau-rivage: "Instrument Serif", serif;
